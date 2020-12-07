@@ -39,6 +39,40 @@ public extension Sequence {
         return results
     }
     
+    func takeAfter(inclusive: Bool = true, _ test: (Iterator.Element) throws -> Bool) rethrows -> [Iterator.Element] {
+        var results: [Iterator.Element] = []
+        var conditionMet = false
+        for element in self {
+            if !inclusive, conditionMet {
+                results.append(element)
+            }
+            if !conditionMet, try test(element) {
+                conditionMet = true
+            }
+            if inclusive, conditionMet {
+                results.append(element)
+            }
+        }
+        return results
+    }
+    
+    func takeUntil(inclusive: Bool = true, _ test: (Iterator.Element) throws -> Bool) rethrows -> [Iterator.Element] {
+        var results: [Iterator.Element] = []
+        var conditionMet = false
+        for element in self {
+            if try !test(element) {
+                conditionMet = true
+            }
+            if !conditionMet || (conditionMet && inclusive) {
+                results.append(element)
+            }
+            if conditionMet {
+                break
+            }
+        }
+        return results
+    }
+    
     /// Returns the array of elements for which condition(element) is unique
     func unique<T: Hashable>(by condition: (Iterator.Element) throws -> T) rethrows -> [Iterator.Element] {
         var results: [Iterator.Element] = []

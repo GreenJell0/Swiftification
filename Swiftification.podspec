@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "Swiftification"
-  s.version      = "11.0.1"
+  s.version      = "11.1.0"
   s.summary      = "Swift extensions to make life more pleasant."
   s.authors      = 'Hilton Campbell', 'Stephan Heilner', 'Branden Russell', 'Nick Shelley', 'Rhett Rogers'
-  s.homepage     = "https://github.com/CrossWaterBridge/Swiftification"
+  s.homepage     = "https://github.com/GreenJell0/Swiftification"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.source       = { :git => "https://github.com/CrossWaterBridge/Swiftification.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/GreenJell0/Swiftification.git", :tag => s.version.to_s }
   s.ios.deployment_target = '10.0'
   s.osx.deployment_target = '10.11'
   s.tvos.deployment_target = '10.0'
